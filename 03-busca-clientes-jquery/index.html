@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Busca de Clientes - jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style> body{font-family:Arial, sans-serif;padding:1rem} li{margin:.25rem 0}</style>
+</head>
+<body>
+  <h1>Busca de Clientes (jQuery)</h1>
+  <input type="text" id="filtro" placeholder="Pesquisar por nome" />
+  <ul id="lista-clientes"></ul>
+
+  <script>
+    // Dados simulados (em sistemas legados, jQuery facilita manipulação do DOM)
+    const clientes = [
+      { id: 1, nome: 'Ana Silva' },
+      { id: 2, nome: 'Bruno Souza' },
+      { id: 3, nome: 'Carlos Pereira' },
+    ];
+
+    function renderLista(lista) {
+      const $ul = $('#lista-clientes');
+      $ul.empty();
+      if (lista.length === 0) {
+        $ul.append('<li>Nenhum cliente encontrado.</li>');
+        return;
+      }
+      lista.forEach(c => $ul.append(`<li data-id="${c.id}">${c.nome}</li>`));
+    }
+
+    // Evento de busca — desacoplado do HTML
+    $('#filtro').on('input', function () {
+      const termo = $(this).val().toLowerCase();
+      const filtrados = clientes.filter(c => c.nome.toLowerCase().includes(termo));
+      renderLista(filtrados);
+    });
+
+    // Render inicial
+    $(document).ready(() => renderLista(clientes));
+  </script>
+</body>
+</html>

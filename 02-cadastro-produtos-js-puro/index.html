@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cadastro de Produtos - JS Puro</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 1rem; }
+    form { margin-bottom: 1rem; }
+    ul { list-style: none; padding: 0; }
+    li { padding: .5rem 0; border-bottom: 1px solid #eee; }
+  </style>
+</head>
+<body>
+  <h1>Cadastro de Produtos (JavaScript Puro)</h1>
+
+  <form id="form-produto">
+    <input type="text" id="nome" placeholder="Nome" required />
+    <input type="number" id="preco" placeholder="Preço" step="0.01" required />
+    <button type="submit">Salvar</button>
+  </form>
+
+  <div id="feedback" aria-live="polite"></div>
+  <ul id="lista-produtos"></ul>
+
+  <script>
+    // Sempre usar const/let — evitar var
+    const form = document.getElementById('form-produto');
+    const listaEl = document.getElementById('lista-produtos');
+    const feedback = document.getElementById('feedback');
+
+    // Usar um array como estado simples da aplicação
+    const produtos = [];
+    let nextId = 1; // Evitar "magic numbers" únicos — usar constantes quando fizer sentido
+
+    function render() {
+      // Evitar manipulações pontuais do DOM espalhadas — re-renderizar a lista a partir do estado
+      listaEl.innerHTML = '';
+      if (produtos.length === 0) {
+        listaEl.innerHTML = '<li>Nenhum produto cadastrado.</li>';
+        return;
+      }
+
+      produtos.forEach(p => {
+        const li = document.createElement('li');
+        li.textContent = `${p.nome} — R$ ${p.preco.toFixed(2)}`;
+        listaEl.appendChild(li);
+      });
+    }
+
+    // Registrar eventos via addEventListener (desacoplar do HTML)
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nome = document.getElementById('nome').value.trim();
+      const preco = parseFloat(document.getElementById('preco').value);
+
+      if (!nome || Number.isNaN(preco)) {
+        feedback.textContent = 'Preencha nome e preço corretamente.';
+        return;
+      }
+
+      const produto = { id: nextId++, nome, preco };
+      produtos.push(produto);
+
+      feedback.textContent = 'Produto cadastrado com sucesso.';
+      form.reset();
+      render();
+    });
+
+    // Render inicial
+    render();
+  </script>
+</body>
+</html>
