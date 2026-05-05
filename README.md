@@ -1,65 +1,70 @@
 # semana10-frameworks-js
 
-Projeto de entrega da Semana 10 — Frameworks JavaScript Modernos.
+Projeto de entrega da Semana 10 - Frameworks JavaScript Modernos.
 
-Estrutura entregue (resumida):
+Este repositório organiza os exemplos da apostila em uma estrutura única para estudo e entrega. A página inicial do Vite funciona como índice visual do material.
 
-- 01-javascript-basico/script.js
-- 02-cadastro-produtos-js-puro/index.html
-- 03-busca-clientes-jquery/index.html
-- 04-componentes-conceituais/BotaoSalvar.jsx
-- 04-componentes-conceituais/CardProduto.jsx
-- 04-componentes-conceituais/Contador.jsx
-- 05-dashboard-academico/DashboardAluno.jsx
-- 06-tela-clientes-componentizada/TelaClientes.jsx
-- 07-startups-componentizado/TelaStartups.jsx
+## Estrutura entregue
 
-Instalação e execução (opcional — há exemplos HTML que podem ser abertos diretamente no navegador):
+- `01-javascript-basico/script.js`
+- `02-cadastro-produtos-js-puro/index.html`
+- `03-busca-clientes-jquery/index.html`
+- `04-componentes-conceituais/BotaoSalvar.jsx`
+- `04-componentes-conceituais/CardProduto.jsx`
+- `04-componentes-conceituais/Contador.jsx`
+- `05-dashboard-academico/DashboardAluno.jsx`
+- `06-tela-clientes-componentizada/TelaClientes.jsx`
+- `07-startups-componentizado/TelaStartups.jsx`
 
-1. Instalar dependências:
+## Como executar
+
+1. Instale as dependências do projeto React/Vite:
 
    ```bash
    npm install
    ```
 
-2. Rodar em modo desenvolvimento:
+2. Abra a aplicação principal com:
 
    ```bash
    npm run dev
    ```
 
-Tecnologias utilizadas:
+3. Para ver os exemplos em HTML/JavaScript puro, abra diretamente no navegador:
 
-- JavaScript (ES6+)
-- jQuery (apenas no exemplo legado)
-- React (componentes em JSX)
-- Vite (configuração mínima para executar os componentes React)
+   - `http://localhost:5173/02-cadastro-produtos-js-puro/`
+   - `http://localhost:5173/03-busca-clientes-jquery/`
 
-Respostas solicitadas
+## Tecnologias utilizadas
 
-1) Qual é a diferença entre JavaScript puro, jQuery e uma abordagem baseada em componentes?
+- JavaScript ES6+
+- jQuery no exemplo legado
+- React nos exemplos em JSX
+- Vite como ambiente de desenvolvimento
 
-- JavaScript puro: interação direta com o DOM usando a API nativa; é leve e não exige dependências, mas tende a gerar lógica acoplada ao HTML quando o projeto cresce.
-- jQuery: biblioteca criada para simplificar a manipulação do DOM e compatibilidade entre navegadores; facilita operações em projetos legados, mas pode incentivar código menos modular.
-- Componentes (React): abordagem declarativa onde a interface é descrita como composição de componentes reutilizáveis; o estado e os efeitos controlam a renderização, tornando o código mais previsível e fácil de manter.
+## Respostas da atividade
 
-2) Qual exemplo você achou mais fácil de entender? Por quê?
+### 1. Diferença entre JavaScript puro, jQuery e componentes
 
-- Exemplo mais fácil: o exemplo de JavaScript puro (01) e o de cadastro (02) são diretos e fáceis de seguir porque exibem a relação entre evento -> manipulação de estado -> atualização de interface sem camadas adicionais.
+JavaScript puro trabalha diretamente com a API nativa do navegador e deixa a lógica mais explícita. jQuery simplifica o DOM e foi muito útil em sistemas legados. Componentes em React organizam a interface em partes reutilizáveis, com estado e props, o que melhora a manutenção em sistemas maiores.
 
-3) Qual exemplo parece mais organizado para um sistema maior? Justifique.
+### 2. Exemplo mais fácil de entender
 
-- A abordagem baseada em componentes (React) é mais organizada para sistemas maiores: componentes pequenos e com responsabilidade única, estado local/compartilhado bem delimitado, e melhor testabilidade e reusabilidade.
+O exemplo de JavaScript puro e o cadastro de produtos foram os mais simples de acompanhar, porque mostram claramente a sequência evento, validação, atualização do estado e renderização da interface.
 
-4) O que você entendeu por componente?
+### 3. Exemplo mais organizado para um sistema maior
 
-- Componente é uma unidade de UI com responsabilidade clara que recebe props e, possivelmente, mantém estado; pode ser reutilizada e composta para formar interfaces maiores.
+A abordagem baseada em componentes é a mais organizada para sistemas grandes, porque separa responsabilidades, favorece reuso e deixa o código mais previsível.
 
-5) O que você entendeu por estado em uma interface?
+### 4. O que é um componente
 
-- Estado é a representação dos dados que influenciam a UI em um dado momento. Mudanças no estado devem provocar re-render da interface para refletir os dados atualizados.
+Componente é uma unidade independente de interface que recebe dados, pode ter comportamento próprio e pode ser combinada com outros componentes.
 
-Observações finais
+### 5. O que é estado em uma interface
 
-- Comentários explicativos foram adicionados nos arquivos para explicar o funcionamento das partes principais.
-- Os exemplos em HTML podem ser abertos diretamente no navegador. Os componentes em JSX têm export default e podem ser executados via Vite conforme instruções acima.
+Estado é o conjunto de dados que determina o que aparece na tela em um momento específico. Quando o estado muda, a interface deve refletir essa mudança.
+
+## Observações
+
+- Os arquivos possuem comentários explicando as partes principais do código.
+- Os exemplos em JSX foram organizados para leitura e estudo, conforme solicitado na atividade.
