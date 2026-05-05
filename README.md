@@ -1,6 +1,10 @@
-# semana10-frameworks-js
+# Projeto estudos React com Vite
 
-Projeto de entrega da Semana 10 - Frameworks JavaScript Modernos.
+<p align="center"><img src="images/project.png" alt="Projeto estudos React com Vite" width="60%" /></p>
+
+
+
+## Projeto de entrega da Semana 10 - Frameworks JavaScript Modernos.
 
 O repositório foi organizado na infraestrutura padrão do Vite: a aplicação React fica em `src/`, os exemplos estáticos ficam em `public/` e a página principal funciona como índice visual do material.
 
@@ -26,9 +30,11 @@ O repositório foi organizado na infraestrutura padrão do Vite: a aplicação R
 - jQuery no exemplo legado
 - React nos exemplos em JSX
 - Vite como ambiente de desenvolvimento
-
-
+  
 ## Estrutura entregu
+
+```
+
 estudo-react-vite-frameworks-js/
 ├─ public/
 │  ├─ 01-javascript-basico/
@@ -64,6 +70,7 @@ estudo-react-vite-frameworks-js/
 ├─ package.json
 ├─ README.md
 └─ vite.config.js
+```
 
 
 ## Respostas da atividade
