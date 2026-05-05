@@ -1,7 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import BotaoSalvar from '../04-componentes-conceituais/BotaoSalvar.jsx';
 import CardProduto from '../04-componentes-conceituais/CardProduto.jsx';
-import Contador from '../04-componentes-conceituais/Contador.jsx';
 import DashboardAluno from '../05-dashboard-academico/DashboardAluno.jsx';
 import TelaClientes from '../06-tela-clientes-componentizada/TelaClientes.jsx';
 import TelaStartups from '../07-startups-componentizado/TelaStartups.jsx';
@@ -221,35 +220,75 @@ function JavaScriptBasico() {
   );
 }
 
+// ========== Funções Utilitárias para Cadastro de Produtos ==========
+
+// Valida se o nome e preço são válidos
+const validarProduto = (nome, preco) => {
+  const nomeTrim = nome.trim();
+  const precoNum = parseFloat(preco);
+  return {
+    valido: nomeTrim.length > 0 && !Number.isNaN(precoNum) && precoNum > 0,
+    nome: nomeTrim,
+    preco: precoNum,
+  };
+};
+
+// Calcula o total dos produtos usando reduce
+const calcularTotalProdutos = (listaProdutos) => {
+  return listaProdutos.reduce((total, produto) => total + produto.preco, 0);
+};
+
+// Formata um valor numérico para moeda brasileira
+const formatarMoeda = (valor) => {
+  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor);
+};
+
 // Componente 02 - Cadastro de Produtos JS Puro
 function CadastroProdutos() {
   const [produtos, setProdutos] = useState([]);
   const [nome, setNome] = useState('');
   const [preco, setPreco] = useState('');
   const [feedback, setFeedback] = useState('');
+  const proximoId = useRef(1);
 
+  // Calcula o total dos produtos
+  const total = useMemo(() => calcularTotalProdutos(produtos), [produtos]);
+
+  // Handler para submit do formulário
   const handleSubmit = (e) => {
     e.preventDefault();
-    const nomeTrim = nome.trim();
-    const precoNum = parseFloat(preco);
+    const validacao = validarProduto(nome, preco);
 
-    if (!nomeTrim || Number.isNaN(precoNum)) {
-      setFeedback('Preencha nome e preço corretamente.');
+    if (!validacao.valido) {
+      setFeedback('Preencha nome e preço corretamente. O preço deve ser maior que zero.');
       return;
     }
 
-    setProdutos([...produtos, { id: produtos.length + 1, nome: nomeTrim, preco: precoNum }]);
+    const novoProduto = {
+      id: proximoId.current,
+      nome: validacao.nome,
+      preco: validacao.preco,
+    };
+
+    proximoId.current += 1;
+    setProdutos([...produtos, novoProduto]);
     setFeedback('Produto cadastrado com sucesso.');
     setNome('');
     setPreco('');
   };
 
+  const handleDelete = (produtoId) => {
+    setProdutos((produtosAtuais) => produtosAtuais.filter((produto) => produto.id !== produtoId));
+    setFeedback('Produto removido com sucesso.');
+  };
+
   return (
-    <div style={{ display: 'grid', gap: 12 }}>
+    <div style={{ display: 'grid', gap: 16 }}>
+      {/* Seção de Formulário */}
       <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 8, gridTemplateColumns: '1fr 1fr auto' }}>
         <input
           type="text"
-          placeholder="Nome"
+          placeholder="Nome do produto"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
           style={{ padding: '8px 12px', border: '1px solid #d9e2ef', borderRadius: 8 }}
@@ -261,6 +300,7 @@ function CadastroProdutos() {
           value={preco}
           onChange={(e) => setPreco(e.target.value)}
           step="0.01"
+          min="0"
           style={{ padding: '8px 12px', border: '1px solid #d9e2ef', borderRadius: 8 }}
           required
         />
@@ -273,11 +313,14 @@ function CadastroProdutos() {
             border: 'none',
             borderRadius: 8,
             cursor: 'pointer',
+            fontWeight: 600,
           }}
         >
           Salvar
         </button>
       </form>
+
+      {/* Feedback de Validação */}
       {feedback && (
         <div
           style={{
@@ -285,30 +328,74 @@ function CadastroProdutos() {
             color: feedback.includes('sucesso') ? '#0d5d3c' : '#8b0000',
             padding: 12,
             borderRadius: 8,
+            fontSize: 14,
           }}
         >
           {feedback}
         </div>
       )}
-      {produtos.length > 0 && (
-        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-          {produtos.map((p) => (
-            <li
-              key={p.id}
-              style={{
-                padding: '8px 0',
-                borderBottom: '1px solid #eee',
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}
-            >
-              <span>{p.nome}</span>
-              <strong>R$ {p.preco.toFixed(2)}</strong>
-            </li>
-          ))}
-        </ul>
+
+      {/* Lista de Produtos */}
+      {produtos.length > 0 ? (
+        <div style={{ display: 'grid', gap: 12 }}>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            {produtos.map((p) => (
+              <li
+                key={p.id}
+                style={{
+                  padding: '12px 0',
+                  borderBottom: '1px solid #eee',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  gap: 12,
+                }}
+              >
+                <span style={{ color: '#10233f', flex: 1 }}>{p.nome}</span>
+                <strong style={{ color: '#10233f' }}>{formatarMoeda(p.preco)}</strong>
+                <button
+                  type="button"
+                  onClick={() => handleDelete(p.id)}
+                  aria-label={`Excluir produto ${p.nome}`}
+                  title="Excluir produto"
+                  style={{
+                    border: 'none',
+                    background: 'transparent',
+                    color: '#c62828',
+                    cursor: 'pointer',
+                    padding: '4px 6px',
+                    lineHeight: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          {/* Total */}
+          <div
+            style={{
+              padding: 12,
+              background: '#f0f4f8',
+              borderRadius: 8,
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              borderTop: '2px solid #10233f',
+            }}
+          >
+            <strong style={{ color: '#10233f' }}>Total de {produtos.length} produto(s):</strong>
+            <span style={{ fontSize: 20, fontWeight: 700, color: '#10233f' }}>{formatarMoeda(total)}</span>
+          </div>
+        </div>
+      ) : (
+        <p style={{ color: '#4a5a70', textAlign: 'center', padding: '16px 0' }}>
+          Nenhum produto cadastrado. Adicione um para começar.
+        </p>
       )}
-      {produtos.length === 0 && <p style={{ color: '#4a5a70' }}>Nenhum produto cadastrado.</p>}
     </div>
   );
 }
@@ -395,12 +482,13 @@ function ConteudoExemplo({ selecionado }) {
     return (
       <section style={panelStyle}>
         <h2 style={titleStyle}>04 - Componentes conceituais</h2>
-        <div style={gridPreviewStyle}>
-          <CardProduto produto={{ id: 1, nome: 'Notebook', preco: 4599.9 }} />
-          <div style={{ display: 'grid', gap: 12 }}>
-            <BotaoSalvar onClick={() => window.alert('Ação de salvar simulada.')} />
-            <Contador inicial={5} />
-          </div>
+        <div style={{ display: 'grid', gap: 16, maxWidth: 360 }}>
+          <CardProduto
+            produto={{ id: 1, nome: 'Notebook', preco: 4599.9 }}
+            mostrarContador={true}
+            contadorInicial={5}
+          />
+          <BotaoSalvar onClick={() => window.alert('Ação de salvar simulada.')} />
         </div>
       </section>
     );
