@@ -26,7 +26,7 @@ function AppHeader() {
         Semana 10 - Frameworks JavaScript Modernos
       </p>
       <h1 style={{ margin: `${SPACING.MD}px 0 ${SPACING.MD}px`, fontSize: FONT_SIZE.XXL }}>
-        Projeto organizado para entrega
+        Projeto estudos React com <Vite></Vite>
       </h1>
       <p style={{ margin: 0, lineHeight: 1.6, maxWidth: 840 }}>
         Esta página funciona como índice do material entregue. Use a navegação abaixo para alternar entre os exemplos.
