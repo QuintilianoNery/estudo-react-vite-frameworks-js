@@ -1,65 +1,13 @@
 import React, { useState, useMemo, useRef } from 'react';
-import BotaoSalvar from '../04-componentes-conceituais/BotaoSalvar.jsx';
-import CardProduto from '../04-componentes-conceituais/CardProduto.jsx';
-import DashboardAluno from '../05-dashboard-academico/DashboardAluno.jsx';
-import TelaClientes from '../06-tela-clientes-componentizada/TelaClientes.jsx';
-import TelaStartups from '../07-startups-componentizado/TelaStartups.jsx';
+import BotaoSalvar from './components/04-componentes-conceituais/BotaoSalvar.jsx';
+import CardProduto from './components/04-componentes-conceituais/CardProduto.jsx';
+import DashboardAluno from './components/05-dashboard-academico/DashboardAluno.jsx';
+import TelaClientes from './components/06-tela-clientes-componentizada/TelaClientes.jsx';
+import TelaStartups from './components/07-startups-componentizado/TelaStartups.jsx';
 import { atividades, alunosExemplo, startupsExemplo, clientesExemplo } from './data/mockData.js';
 import { COLORS } from './constants/colors.js';
-import { SPACING, BORDER_RADIUS, FONT_SIZE, SHADOWS } from './constants/sizes.js';
+import { SPACING, FONT_SIZE } from './constants/sizes.js';
 import { STYLES } from './constants/styles.js';
-
-const atividades_old = [
-  {
-    numero: '01',
-    titulo: 'JavaScript básico',
-    arquivo: '/01-javascript-basico/script.js',
-    tipo: 'script JS',
-    descricao: 'Exemplo com arrays, função e console para reforçar a base da linguagem.',
-  },
-  {
-    numero: '02',
-    titulo: 'Cadastro de produtos com JS puro',
-    arquivo: '/02-cadastro-produtos-js-puro/index.html',
-    tipo: 'HTML + JS puro',
-    descricao: 'Formulário com validação simples e atualização manual do DOM.',
-  },
-  {
-    numero: '03',
-    titulo: 'Busca de clientes com jQuery',
-    arquivo: '/03-busca-clientes-jquery/index.html',
-    tipo: 'HTML + jQuery',
-    descricao: 'Filtro de clientes simulando um cenário legado com manipulação facilitada.',
-  },
-  {
-    numero: '04',
-    titulo: 'Componentes conceituais',
-    arquivo: '/04-componentes-conceituais/',
-    tipo: 'JSX',
-    descricao: 'Botão, card de produto e contador com estado local.',
-  },
-  {
-    numero: '05',
-    titulo: 'Dashboard acadêmico',
-    arquivo: '/05-dashboard-academico/DashboardAluno.jsx',
-    tipo: 'JSX',
-    descricao: 'Componente composto com lista de cursos e contador reutilizável.',
-  },
-  {
-    numero: '06',
-    titulo: 'Tela de clientes componentizada',
-    arquivo: '/06-tela-clientes-componentizada/TelaClientes.jsx',
-    tipo: 'JSX',
-    descricao: 'Exemplo com carregamento, erro e estado vazio.',
-  },
-  {
-    numero: '07',
-    titulo: 'Tela de startups com busca e filtro',
-    arquivo: '/07-startups-componentizado/TelaStartups.jsx',
-    tipo: 'JSX',
-    descricao: 'Lista filtrável com busca por nome e seleção por setor.',
-  },
-];
 
 const apiClientesSimulada = () => Promise.resolve(clientesExemplo);
 
