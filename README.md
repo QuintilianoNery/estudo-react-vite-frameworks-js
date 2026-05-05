@@ -36,6 +36,19 @@ O repositório foi organizado na infraestrutura padrão do Vite: a aplicação R
 ```
 
 estudo-react-vite-frameworks-js/
+├─ dist/
+│  ├─ 01-javascript-basico/
+│  │  └─ script.js
+│  ├─ 02-cadastro-produtos-js-puro/
+│  │  └─ index.html
+│  ├─ 03-busca-clientes-jquery/
+│  │  └─ index.html
+│  ├─ assets/
+│  │  ├─ index-Bhfe2Kkk.js
+│  │  └─ index-CsxfTubl.css
+│  └─ index.html
+├─ images/
+│  └─ project.png
 ├─ public/
 │  ├─ 01-javascript-basico/
 │  │  └─ script.js
@@ -46,14 +59,20 @@ estudo-react-vite-frameworks-js/
 ├─ src/
 │  ├─ components/
 │  │  ├─ 04-componentes-conceituais/
+│  │  │  ├─ BotaoSalvar.css
 │  │  │  ├─ BotaoSalvar.jsx
+│  │  │  ├─ CardProduto.css
 │  │  │  ├─ CardProduto.jsx
+│  │  │  ├─ Contador.css
 │  │  │  └─ Contador.jsx
 │  │  ├─ 05-dashboard-academico/
+│  │  │  ├─ DashboardAluno.css
 │  │  │  └─ DashboardAluno.jsx
 │  │  ├─ 06-tela-clientes-componentizada/
+│  │  │  ├─ TelaClientes.css
 │  │  │  └─ TelaClientes.jsx
 │  │  └─ 07-startups-componentizado/
+│  │     ├─ TelaStartups.css
 │  │     └─ TelaStartups.jsx
 │  ├─ constants/
 │  │  ├─ colors.js
@@ -61,6 +80,9 @@ estudo-react-vite-frameworks-js/
 │  │  └─ styles.js
 │  ├─ data/
 │  │  └─ mockData.js
+│  ├─ styles/
+│  │  ├─ shared.css
+│  │  └─ variables.css
 │  ├─ App.jsx
 │  └─ main.jsx
 ├─ .gitignore
@@ -70,6 +92,7 @@ estudo-react-vite-frameworks-js/
 ├─ package.json
 ├─ README.md
 └─ vite.config.js
+
 ```
 
 

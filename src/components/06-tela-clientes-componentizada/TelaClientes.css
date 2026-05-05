@@ -1,0 +1,5 @@
+/* TelaClientes.css */
+.container {
+  display: grid;
+  gap: var(--spacing-xl);
+}

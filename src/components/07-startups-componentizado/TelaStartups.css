@@ -1,0 +1,28 @@
+/* TelaStartups.css */
+.container {
+  display: grid;
+  gap: var(--spacing-xl);
+}
+
+.form-container {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.form-group {
+  display: contents;
+}
+
+.search-group,
+.filter-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-full {
+  width: 100%;
+}
+
+.select-full {
+  width: 100%;
+}

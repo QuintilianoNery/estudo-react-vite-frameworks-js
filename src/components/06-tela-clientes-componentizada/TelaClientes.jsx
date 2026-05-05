@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import '../../styles/variables.css';
+import '../../styles/shared.css';
+import './TelaClientes.css';
 
 // ============================================================================
 // Tela de clientes componentizada
@@ -8,26 +11,6 @@ import React, { useEffect, useState } from 'react';
 // ============================================================================
 // Props: apiSimulada (função que retorna Promise com lista de clientes)
 // ============================================================================
-
-const cardStyle = {
-  border: '1px solid #d9e2ef',
-  padding: '16px',
-  borderRadius: '12px',
-  background: '#ffffff',
-  boxShadow: '0 2px 8px rgba(16, 35, 63, 0.08)',
-};
-
-const listStyle = {
-  margin: 0,
-  paddingLeft: 16,
-  display: 'grid',
-  gap: 8,
-};
-
-const listItemStyle = {
-  color: '#4a5a70',
-  fontSize: 14,
-};
 
 export default function TelaClientes({ apiSimulada }) {
   const [clientes, setClientes] = useState([]);
@@ -55,30 +38,30 @@ export default function TelaClientes({ apiSimulada }) {
 
   if (loading)
     return (
-      <article style={cardStyle}>
-        <p style={{ margin: 0, color: '#5b6b82' }}>Carregando clientes...</p>
+      <article className="card">
+        <p className="message-loading">Carregando clientes...</p>
       </article>
     );
 
   if (error)
     return (
-      <article style={cardStyle}>
-        <p style={{ margin: 0, color: '#c62828' }}>Erro: {error}</p>
+      <article className="card">
+        <p className="message-error">Erro: {error}</p>
       </article>
     );
 
   if (clientes.length === 0)
     return (
-      <article style={cardStyle}>
-        <p style={{ margin: 0, color: '#999' }}>Nenhum cliente encontrado.</p>
+      <article className="card">
+        <p className="message-empty">Nenhum cliente encontrado.</p>
       </article>
     );
 
   return (
-    <article style={cardStyle}>
-      <ul style={listStyle}>
+    <article className="card">
+      <ul className="list">
         {clientes.map((c) => (
-          <li key={c.id} style={listItemStyle}>
+          <li key={c.id} className="list-item">
             <strong>{c.nome}</strong> — {c.email}
           </li>
         ))}

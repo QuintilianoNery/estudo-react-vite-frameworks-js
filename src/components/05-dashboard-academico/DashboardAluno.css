@@ -1,0 +1,35 @@
+/* DashboardAluno.css */
+.container {
+  display: grid;
+  gap: var(--spacing-xl);
+}
+
+.section {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.card {
+  border: 1px solid var(--border-light);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-md);
+  background: var(--background);
+  box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.title {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.button-group {
+  display: grid;
+  gap: var(--spacing-md);
+}

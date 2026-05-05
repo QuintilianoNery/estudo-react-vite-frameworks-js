@@ -1,0 +1,63 @@
+/* CardProduto.css */
+.card {
+  border: 1px solid var(--border-light);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-md);
+  background: var(--background);
+  box-shadow: 0 2px 8px var(--shadow-light);
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.header {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.produto-nome {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.produto-preco {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.footer {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.button-counter {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border-light);
+  background: var(--background);
+  color: var(--text-primary);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all var(--transition);
+}
+
+.button-counter:hover {
+  border-color: var(--primary-light);
+  color: var(--primary-light);
+}
+
+.button-counter:active {
+  transform: scale(0.95);
+}
+
+.quantity-display {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-primary);
+}

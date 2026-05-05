@@ -1,0 +1,50 @@
+/* Contador.css */
+.container {
+  display: grid;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.label {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.button-counter {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-light);
+  background: #f0f4f8;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all var(--transition);
+}
+
+.button-counter:hover {
+  border-color: var(--primary-light);
+  color: var(--primary-light);
+}
+
+.button-counter:active {
+  transform: scale(0.95);
+}
+
+.display {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}

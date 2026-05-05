@@ -1,0 +1,22 @@
+/* BotaoSalvar.css */
+.button {
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: var(--primary-dark);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  transition: background var(--transition);
+}
+
+.button:hover:not(:disabled) {
+  background: var(--primary-light);
+}
+
+.button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}

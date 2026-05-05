@@ -1,0 +1,37 @@
+/* ============================================================================
+   VARIÁVEIS CSS - Design tokens centralizados
+   ============================================================================ */
+
+:root {
+  /* Cores */
+  --primary-dark: #10233f;
+  --primary-light: #1e6091;
+  --border-light: #d9e2ef;
+  --text-primary: #10233f;
+  --text-secondary: #5b6b82;
+  --text-muted: #4a5a70;
+  --text-light: #999;
+  --background: #ffffff;
+  --background-subtle: #f6f8fb;
+  --shadow-light: rgba(16, 35, 63, 0.08);
+  --error-color: #c62828;
+
+  /* Espaçamento */
+  --spacing-xs: 4px;
+  --spacing-sm: 6px;
+  --spacing-md: 8px;
+  --spacing-lg: 12px;
+  --spacing-xl: 16px;
+  --spacing-2xl: 24px;
+
+  /* Tipografia */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 28px;
+
+  /* Efeitos */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --transition: 0.2s;
+}
