@@ -4,8 +4,12 @@ import CardProduto from '../04-componentes-conceituais/CardProduto.jsx';
 import DashboardAluno from '../05-dashboard-academico/DashboardAluno.jsx';
 import TelaClientes from '../06-tela-clientes-componentizada/TelaClientes.jsx';
 import TelaStartups from '../07-startups-componentizado/TelaStartups.jsx';
+import { atividades, alunosExemplo, startupsExemplo, clientesExemplo } from './data/mockData.js';
+import { COLORS } from './constants/colors.js';
+import { SPACING, BORDER_RADIUS, FONT_SIZE, SHADOWS } from './constants/sizes.js';
+import { STYLES } from './constants/styles.js';
 
-const atividades = [
+const atividades_old = [
   {
     numero: '01',
     titulo: 'JavaScript básico',
@@ -57,52 +61,28 @@ const atividades = [
   },
 ];
 
-const alunosExemplo = {
-  nome: 'Mariana Lima',
-  matricula: '2026.10.1842',
-  cursosCursando: [
-    { id: 1, nome: 'Front End II', nota: 9.4 },
-    { id: 2, nome: 'Banco de Dados', nota: 8.7 },
-    { id: 3, nome: 'Frameworks JavaScript', nota: 9.1 },
-  ],
-};
-
-const startupsExemplo = [
-  { id: 1, nome: 'Nexa Labs', setor: 'EdTech' },
-  { id: 2, nome: 'AgroFlow', setor: 'Agro' },
-  { id: 3, nome: 'HealthLink', setor: 'HealthTech' },
-  { id: 4, nome: 'ByteCraft', setor: 'SaaS' },
-];
-
-const clientesSimulados = [
-  { id: 1, nome: 'Ana Silva', email: 'ana@exemplo.com' },
-  { id: 2, nome: 'Bruno Souza', email: 'bruno@exemplo.com' },
-  { id: 3, nome: 'Carla Mendes', email: 'carla@exemplo.com' },
-];
-
-function apiClientesSimulada() {
-  return Promise.resolve(clientesSimulados);
-}
+const apiClientesSimulada = () => Promise.resolve(clientesExemplo);
 
 function AppHeader() {
   return (
-    <header
-      style={{
-        background: '#ffffff',
-        border: '1px solid #d9e2ef',
-        borderRadius: 16,
-        padding: 24,
-        boxShadow: '0 10px 30px rgba(16, 35, 63, 0.08)',
-        marginBottom: 24,
-      }}
-    >
-      <p style={{ margin: 0, textTransform: 'uppercase', letterSpacing: 1.2, fontSize: 12, color: '#5b6b82' }}>
+    <header style={{ ...STYLES.panelStyle, marginBottom: SPACING.XL }}>
+      <p
+        style={{
+          margin: 0,
+          textTransform: 'uppercase',
+          letterSpacing: 1.2,
+          fontSize: FONT_SIZE.XS,
+          color: COLORS.TERTIARY,
+        }}
+      >
         Semana 10 - Frameworks JavaScript Modernos
       </p>
-      <h1 style={{ margin: '8px 0 12px', fontSize: 32 }}>Projeto organizado para entrega</h1>
+      <h1 style={{ margin: `${SPACING.MD}px 0 ${SPACING.MD}px`, fontSize: FONT_SIZE.XXL }}>
+        Projeto organizado para entrega
+      </h1>
       <p style={{ margin: 0, lineHeight: 1.6, maxWidth: 840 }}>
-        Esta página funciona como índice do material entregue. Use a navegação abaixo para alternar entre os exemplos e,
-        nos itens 04 a 07, ver uma prévia dos componentes JSX.
+        Esta página funciona como índice do material entregue. Use a navegação abaixo para alternar entre os exemplos.
+        Os itens 04 a 07, tem uma prévia dos componentes JSX.
       </p>
     </header>
   );
@@ -173,26 +153,11 @@ function ExampleList({ selected, onSelect }) {
   );
 }
 
-const panelStyle = {
-  background: '#ffffff',
-  border: '1px solid #d9e2ef',
-  borderRadius: 16,
-  padding: 24,
-  boxShadow: '0 10px 30px rgba(16, 35, 63, 0.06)',
-};
+const panelStyle = STYLES.panelStyle;
 
-const titleStyle = {
-  margin: '0 0 16px',
-  fontSize: 24,
-};
+const titleStyle = STYLES.titleStyle;
 
-const gridPreviewStyle = {
-  display: 'grid',
-  gap: 16,
-  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-};
-
-// Componente 01 - JavaScript Básico
+// Validação de produto com regras de negócio
 function JavaScriptBasico() {
   const produtos = [
     { id: 1, nome: 'Caneta', preco: 2.5 },
@@ -220,9 +185,7 @@ function JavaScriptBasico() {
   );
 }
 
-// ========== Funções Utilitárias para Cadastro de Produtos ==========
-
-// Valida se o nome e preço são válidos
+// Validação de produto com regras de negócio
 const validarProduto = (nome, preco) => {
   const nomeTrim = nome.trim();
   const precoNum = parseFloat(preco);
@@ -233,12 +196,12 @@ const validarProduto = (nome, preco) => {
   };
 };
 
-// Calcula o total dos produtos usando reduce
+// Cálculo de total com reduce para prática funcional
 const calcularTotalProdutos = (listaProdutos) => {
   return listaProdutos.reduce((total, produto) => total + produto.preco, 0);
 };
 
-// Formata um valor numérico para moeda brasileira
+// Formatação de valores monetários seguindo padrão brasileiro
 const formatarMoeda = (valor) => {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor);
 };
