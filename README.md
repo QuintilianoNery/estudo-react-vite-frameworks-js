@@ -4,24 +4,6 @@ Projeto de entrega da Semana 10 - Frameworks JavaScript Modernos.
 
 O repositório foi organizado na infraestrutura padrão do Vite: a aplicação React fica em `src/`, os exemplos estáticos ficam em `public/` e a página principal funciona como índice visual do material.
 
-## Estrutura entregue
-
-- `src/App.jsx`
-- `src/main.jsx`
-- `src/components/04-componentes-conceituais/BotaoSalvar.jsx`
-- `src/components/04-componentes-conceituais/CardProduto.jsx`
-- `src/components/04-componentes-conceituais/Contador.jsx`
-- `src/components/05-dashboard-academico/DashboardAluno.jsx`
-- `src/components/06-tela-clientes-componentizada/TelaClientes.jsx`
-- `src/components/07-startups-componentizado/TelaStartups.jsx`
-- `src/constants/colors.js`
-- `src/constants/sizes.js`
-- `src/constants/styles.js`
-- `src/data/mockData.js`
-- `public/01-javascript-basico/script.js`
-- `public/02-cadastro-produtos-js-puro/index.html`
-- `public/03-busca-clientes-jquery/index.html`
-
 ## Como executar
 
 1. Instale as dependências do projeto:
@@ -34,13 +16,9 @@ O repositório foi organizado na infraestrutura padrão do Vite: a aplicação R
 
    ```bash
    npm run dev
+   Ou 
+   npx vite --port=5173 # para garantir que não haja conflito de porta 
    ```
-
-3. Abra os exemplos estáticos diretamente pelas rotas do Vite:
-
-   - `http://localhost:5173/01-javascript-basico/script.js`
-   - `http://localhost:5173/02-cadastro-produtos-js-puro/`
-   - `http://localhost:5173/03-busca-clientes-jquery/`
 
 ## Tecnologias utilizadas
 
@@ -48,6 +26,45 @@ O repositório foi organizado na infraestrutura padrão do Vite: a aplicação R
 - jQuery no exemplo legado
 - React nos exemplos em JSX
 - Vite como ambiente de desenvolvimento
+
+
+## Estrutura entregu
+estudo-react-vite-frameworks-js/
+├─ public/
+│  ├─ 01-javascript-basico/
+│  │  └─ script.js
+│  ├─ 02-cadastro-produtos-js-puro/
+│  │  └─ index.html
+│  └─ 03-busca-clientes-jquery/
+│     └─ index.html
+├─ src/
+│  ├─ components/
+│  │  ├─ 04-componentes-conceituais/
+│  │  │  ├─ BotaoSalvar.jsx
+│  │  │  ├─ CardProduto.jsx
+│  │  │  └─ Contador.jsx
+│  │  ├─ 05-dashboard-academico/
+│  │  │  └─ DashboardAluno.jsx
+│  │  ├─ 06-tela-clientes-componentizada/
+│  │  │  └─ TelaClientes.jsx
+│  │  └─ 07-startups-componentizado/
+│  │     └─ TelaStartups.jsx
+│  ├─ constants/
+│  │  ├─ colors.js
+│  │  ├─ sizes.js
+│  │  └─ styles.js
+│  ├─ data/
+│  │  └─ mockData.js
+│  ├─ App.jsx
+│  └─ main.jsx
+├─ .gitignore
+├─ index.html
+├─ LICENSE
+├─ package-lock.json
+├─ package.json
+├─ README.md
+└─ vite.config.js
+
 
 ## Respostas da atividade
 
@@ -75,4 +92,3 @@ Estado é o conjunto de dados que determina o que aparece na tela em um momento 
 
 - Os exemplos React foram movidos para `src/components` para seguir a organização do Vite.
 - Os exemplos estáticos foram colocados em `public/` para manter os caminhos diretos.
-- Os exemplos em JSX foram organizados para leitura e estudo, conforme solicitado na atividade.
