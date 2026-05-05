@@ -18,6 +18,8 @@ const inputStyle = {
   fontFamily: 'inherit',
   outline: 'none',
   transition: 'border-color 0.2s',
+  boxSizing: 'border-box',
+  maxWidth: '100%'
 };
 
 const selectStyle = {
@@ -30,6 +32,8 @@ const selectStyle = {
   fontFamily: 'inherit',
   outline: 'none',
   cursor: 'pointer',
+  boxSizing: 'border-box',
+  maxWidth: '100%'
 };
 
 const cardStyle = {
